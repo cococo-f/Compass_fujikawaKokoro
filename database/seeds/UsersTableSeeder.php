@@ -18,8 +18,18 @@ class UsersTableSeeder extends Seeder
             'over_name_kana' =>'フジカワ',
             'under_name_kana' =>'ココロ',
             'mail_address' => 'omochi@0815.com',
-            'sex' =>'1',
+            'sex' =>'2',
             'birth_day' =>'1998/11/30',
+            'role' => '4',
+            'password' =>bcrypt('password'),],
+
+            ['over_name' => 'キム',
+            'under_name' => 'ミンギュ',
+            'over_name_kana' =>'キム',
+            'under_name_kana' =>'ミンギュ',
+            'mail_address' => 'mingyu@0406.com',
+            'sex' =>'1',
+            'birth_day' =>'1997/04/06',
             'role' => '1',
             'password' =>bcrypt('password'),]
             ]);

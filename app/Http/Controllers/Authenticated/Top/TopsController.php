@@ -6,9 +6,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth;
 
+
 class TopsController extends Controller
 {
     public function show(){
+        $role=\DB::table('users')->where('role');
         return view('authenticated.top.top');
     }
 
