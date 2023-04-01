@@ -17,12 +17,12 @@ class UsersTableSeeder extends Seeder
             'under_name' => '真心',
             'over_name_kana' =>'フジカワ',
             'under_name_kana' =>'ココロ',
-             'mail_address' => 'omochi@0815.com',
-             'sex' =>'0',
-             'birth_day' =>'1998/11/30',
-             'role' => '0',
-             'password' =>bcrypt('password'),]
-              ]);
+            'mail_address' => 'omochi@0815.com',
+            'sex' =>'1',
+            'birth_day' =>'1998/11/30',
+            'role' => '1',
+            'password' =>bcrypt('password'),]
+            ]);
 
     }
 }
