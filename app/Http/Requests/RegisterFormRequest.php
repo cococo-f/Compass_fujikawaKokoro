@@ -88,5 +88,5 @@ class RegisterFormRequest extends FormRequest
             'password.max' => 'パスワードは30文字以内で入力してください。',
             'password.confirmed' => '確認用パスワードと一致していません。',
         ];
-}
+    }
 }
