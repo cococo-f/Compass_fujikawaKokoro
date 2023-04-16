@@ -13,6 +13,8 @@ class Like extends Model
         'like_post_id'
     ];
 
+    // SNSのisFollowingメソッドと似ている。
+    // いいねした投稿のidとその投稿自体のidが一致している数を数える
     public function likeCounts($post_id){
         return $this->where('like_post_id', $post_id)->get()->count();
     }

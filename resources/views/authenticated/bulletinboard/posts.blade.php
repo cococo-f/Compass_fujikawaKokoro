@@ -15,9 +15,14 @@
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
-            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <p class="m-0"><i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">
+            <!-- Like.php(モデル)を使えるようにする→その中のlikeCountsメソッドを使う。()内はpost_idと同じ。書き方が違うためややこしい。 -->
+            <!-- view→modelに繋がっている(いいねを押すと発火) -->
+            {{$like->likeCounts($post->id)}}</span></p>
             @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
+            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">
+            <!-- いいねを外した時も同様 -->
+            {{$like->likeCounts($post->id)}}</span></p>
             @endif
           </div>
         </div>
