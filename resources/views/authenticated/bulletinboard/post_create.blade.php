@@ -6,6 +6,10 @@
     <div class="">
       <p class="mb-0">カテゴリー</p>
       <select class="w-100" form="postCreate" name="post_category_id">
+        <option value="" selected disabled>教科</option>
+        <option value="1">英語</option>
+        <option value="2">国語</option>
+        <option value="3">数学</option>
         @foreach($main_categories as $main_category)
         <optgroup label="{{ $main_category->main_category }}"></optgroup>
         <!-- サブカテゴリー表示 -->
