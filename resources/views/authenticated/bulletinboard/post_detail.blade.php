@@ -15,6 +15,10 @@
           </div>
         </div>
 
+        @if($errors->first())
+        <span class="error_message">{{ $errors->first() }}</span>
+        @endif
+
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
