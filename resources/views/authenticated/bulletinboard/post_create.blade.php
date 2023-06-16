@@ -57,9 +57,16 @@
         @endforeach
       </select>
       <!-- サブカテゴリーの追加 -->
-      <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest">
+      <input type="text" class="w-100" name="sub_category" form="subCategoryRequest">
       <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest">
       <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}</form>
+      <!-- エラーメッセージ -->
+      @if($errors->first('main_category_id'))
+      <p class="error_message">{{ $errors->first('main_category_id') }}</p>
+      @endif
+      @if($errors->first('sub_category'))
+      <p class="error_message">{{ $errors->first('sub_category') }}</p>
+      @endif
     </div>
   </div>
   @endcan

@@ -14,6 +14,7 @@ use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\BulletinBoard\UpdateFormRequest;
 use App\Http\Requests\BulletinBoard\CommentFormRequest;
 use App\Http\Requests\BulletinBoard\MainCategoryFormRequest;
+use App\Http\Requests\BulletinBoard\SubCategoryFormRequest;
 use Auth;
 
 class PostsController extends Controller
@@ -79,7 +80,7 @@ class PostsController extends Controller
         return redirect()->route('post.input');
     }
 
-    public function subCategoryCreate(Request $request){
+    public function subCategoryCreate(SubCategoryFormRequest $request){
         $sub_category_name = $request->input('sub_category_name');
         $main_category_id = $request->input('main_category_id');
         SubCategory::create([
