@@ -13,6 +13,7 @@ use App\Models\Users\User;
 use App\Http\Requests\BulletinBoard\PostFormRequest;
 use App\Http\Requests\BulletinBoard\UpdateFormRequest;
 use App\Http\Requests\BulletinBoard\CommentFormRequest;
+use App\Http\Requests\BulletinBoard\MainCategoryFormRequest;
 use Auth;
 
 class PostsController extends Controller
@@ -72,22 +73,22 @@ class PostsController extends Controller
         Post::findOrFail($id)->delete();
         return redirect()->route('post.show');
     }
-    public function mainCategoryCreate(Request $request){
-        MainCategory::create(['main_category' => $request->main_category_name]);
+
+    public function mainCategoryCreate(MainCategoryFormRequest $request){
+        MainCategory::create(['main_category' => $request->main_category]);
         return redirect()->route('post.input');
     }
 
     public function subCategoryCreate(Request $request){
         $sub_category_name = $request->input('sub_category_name');
-        // dd($sub_category_name);
         $main_category_id = $request->input('main_category_id');
         SubCategory::create([
             'main_category_id' => $main_category_id,
             'sub_category' => $sub_category_name,
         ]);
-
         return redirect()->route('post.input');
     }
+
     public function commentCreate(CommentFormRequest $request){
         PostComment::create([
             'post_id' => $request->post_id,

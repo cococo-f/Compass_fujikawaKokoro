@@ -37,13 +37,17 @@
     <div class="category_area mt-5 p-5">
       <div class="">
         <p class="m-0">メインカテゴリー</p>
-        <input type="text" class="w-100" name="main_category_name" form="mainCategoryRequest">
+        <input type="text" class="w-100" name="main_category" form="mainCategoryRequest">
         <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="mainCategoryRequest">
       </div>
       <form action="{{ route('main.category.create') }}" method="post" id="mainCategoryRequest">{{ csrf_field() }}</form>
-      <!-- サブカテゴリー追加 -->
-
+      @if($errors->first('main_category'))
+      <span class="error_message">{{ $errors->first('main_category') }}</span>
+      @endif
+      <!-- サブカテゴリー -->
+      <!-- メインカテゴリーの選択 -->
       <p class="m-0">サブカテゴリー</p>
+      <!-- ↓formタグのidとinputタグのformが一致することで値を送ることができる↓ -->
       <select class="form-select" name="main_category_id" form="subCategoryRequest">
         <option value="" selected="selected">選択してください</option>
         @foreach($main_categories as $main_category)
@@ -52,6 +56,7 @@
         </option>
         @endforeach
       </select>
+      <!-- サブカテゴリーの追加 -->
       <input type="text" class="w-100" name="sub_category_name" form="subCategoryRequest">
       <input type="submit" value="追加" class="w-100 btn btn-primary p-0" form="subCategoryRequest">
       <form action="{{ route('sub.category.create') }}" method="post" id="subCategoryRequest">{{ csrf_field() }}</form>
