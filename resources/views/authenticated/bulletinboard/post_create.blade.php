@@ -17,9 +17,9 @@
         @if($main_category->id === $sub_category->main_category_id )
         <span>{{$sub_category->sub_category}}</span>
         @endif
-        @endforeach
-        @endforeach
         </option>
+        @endforeach
+        @endforeach
       </select>
     </div>
     <div class="mt-3">
@@ -78,6 +78,7 @@
       @endif
     </div>
   </div>
+
   @endcan
 </div>
 @endsection
