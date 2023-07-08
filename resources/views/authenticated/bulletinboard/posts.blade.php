@@ -41,8 +41,14 @@
       <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
       <ul>
-        @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+        <!-- メインカテゴリーのidとサブカテゴリーに登録されているメインカテゴリーidが一致したものを繰り返し表示 -->
+        @foreach($categories as $main_category)
+        <li class="main_categories" category_id="{{ $main_category->id }}"><span>{{ $main_category->main_category }}<span></li>
+        @foreach($sub_categories as $sub_category)
+        @if($main_category->id === $sub_category->main_category_id )
+        <span>{{$sub_category->sub_category}}</span>
+        @endif
+        @endforeach
         @endforeach
       </ul>
     </div>

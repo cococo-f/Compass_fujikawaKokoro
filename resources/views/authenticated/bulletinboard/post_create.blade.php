@@ -5,12 +5,21 @@
   <div class="post_create_area border w-50 m-5 p-5">
     <div class="">
       <p class="mb-0">カテゴリー</p>
-      <select class="w-100" form="postCreate" name="post_category_id">
-        @foreach($main_categories as $main_category)
-        <optgroup label="{{ $main_category->main_category }}"></optgroup>
-        <!-- サブカテゴリー表示 -->
-        </optgroup>
+      <!-- 投稿サブカテゴリー表示 -->
+      <select class="form-select w-100" name="main_category_id" form="subCategoryRequest">
+        <option disabled selected>選択してください</option>
+        @foreach($categories as $main_category)
+        <option disabled selected="{{ $main_category->main_category }}">
+        {{ $main_category->main_category }}
+        </option>
+        @foreach($sub_categories as $sub_category)
+        <option value="{{ $sub_category->sub_category }}">
+        @if($main_category->id === $sub_category->main_category_id )
+        <span>{{$sub_category->sub_category}}</span>
+        @endif
         @endforeach
+        @endforeach
+        </option>
       </select>
     </div>
     <div class="mt-3">
@@ -50,7 +59,7 @@
       <!-- ↓formタグのidとinputタグのformが一致することで値を送ることができる↓ -->
       <select class="form-select" name="main_category_id" form="subCategoryRequest">
         <option value="" selected="selected">選択してください</option>
-        @foreach($main_categories as $main_category)
+        @foreach($categories as $main_category)
         <option value="{{ $main_category->id }}">
         {{ $main_category->main_category }}
         </option>

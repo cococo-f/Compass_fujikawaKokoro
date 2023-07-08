@@ -24,7 +24,7 @@ class SubCategoryFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'main_category_id' => 'required|exists:sub_categories,id',
+            'main_category_id' => 'required|exists:main_categories,id',
             'sub_category' =>  'required|string|max:100|unique:sub_categories',
         ];
     }

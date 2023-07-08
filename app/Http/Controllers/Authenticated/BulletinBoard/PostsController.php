@@ -22,6 +22,7 @@ class PostsController extends Controller
     public function show(Request $request){
         $posts = Post::with('user', 'postComments')->get();
         $categories = MainCategory::get();
+        $sub_categories = SubCategory::get();
         // ↓インスタンス化(Likeモデルを使えるようにしている)
         $like = new Like;
         $post_comment = new Post;
@@ -40,7 +41,7 @@ class PostsController extends Controller
             $posts = Post::with('user', 'postComments')
             ->where('user_id', Auth::id())->get();
         }
-        return view('authenticated.bulletinboard.posts', compact('posts', 'categories', 'like', 'post_comment'));
+        return view('authenticated.bulletinboard.posts', compact('posts', 'categories','sub_categories', 'like', 'post_comment'));
     }
 
     public function postDetail($post_id){
@@ -49,16 +50,20 @@ class PostsController extends Controller
     }
 
     public function postInput(){
-        $main_categories = MainCategory::get();
-        return view('authenticated.bulletinboard.post_create', compact('main_categories'));
+        $categories = MainCategory::get();
+        $sub_categories = SubCategory::get();
+        return view('authenticated.bulletinboard.post_create', compact('categories','sub_categories'));
     }
 
     public function postCreate(PostFormRequest $request){
+        $categories = MainCategory::get();
+        $sub_categories = SubCategory::get();
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
+
         return redirect()->route('post.show');
     }
 
@@ -81,11 +86,11 @@ class PostsController extends Controller
     }
 
     public function subCategoryCreate(SubCategoryFormRequest $request){
-        $sub_category_name = $request->input('sub_category_name');
+        $sub_category = $request->input('sub_category');
         $main_category_id = $request->input('main_category_id');
         SubCategory::create([
             'main_category_id' => $main_category_id,
-            'sub_category' => $sub_category_name,
+            'sub_category' => $sub_category,
         ]);
         return redirect()->route('post.input');
     }
