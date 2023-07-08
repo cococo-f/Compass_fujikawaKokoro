@@ -15,6 +15,8 @@ class UsersController extends Controller
 {
 
     public function showUsers(Request $request){
+        $subject_lists = Subjects::all();
+
         $keyword = $request->keyword;
         $category = $request->category;
         $updown = $request->updown;
@@ -24,7 +26,7 @@ class UsersController extends Controller
         $userFactory = new SearchResultFactories();
         $users = $userFactory->initializeUsers($keyword, $category, $updown, $gender, $role, $subjects);
         $subjects = Subjects::all();
-        return view('authenticated.users.search', compact('users', 'subjects'));
+        return view('authenticated.users.search', compact('users', 'subjects','subject_lists'));
     }
 
     public function userProfile($id){

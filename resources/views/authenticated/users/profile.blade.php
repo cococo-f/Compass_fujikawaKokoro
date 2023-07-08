@@ -11,7 +11,7 @@
       <p>生年月日 : <span>{{ $user->birth_day }}</span></p>
       <div>選択科目 :
         @foreach($user->subjects as $subject)
-        <span>{{ $subject->subject }}</span>
+        <span>{{ $subject }}</span>
         @endforeach
       </div>
       <div class="">
