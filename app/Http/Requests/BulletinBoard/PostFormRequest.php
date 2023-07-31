@@ -26,7 +26,7 @@ class PostFormRequest extends FormRequest
         return [
             'post_title' => 'required|string|max:100',
             'post_body' => 'required|string|max:5000',
-            'post_category_id'=> 'required|exists:users,id',
+            // 'post_category'=> 'required|exists:sub_categories,sub_category',
         ];
     }
 
@@ -38,8 +38,8 @@ class PostFormRequest extends FormRequest
             'post_body.required' => '投稿内容は必須項目です。',
             'post_body.string' => '投稿内容は文字列で入力してください。',
             'post_body.max' => '投稿内容は5000文字以内で入力してください。',
-            'post_category_id.required'=> 'カテゴリーは必須項目です。',
-            'post_category_id.sometimes'=> '登録されているカテゴリーを選択してください。',
+            'post_sub_category.required'=> 'カテゴリーは必須項目です。',
+            'post_sub_category.exists'=> '登録されているカテゴリーを選択してください。',
         ];
     }
 }

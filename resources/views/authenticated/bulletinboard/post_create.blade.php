@@ -4,20 +4,23 @@
 <div class="post_create_container d-flex">
   <div class="post_create_area border w-50 m-5 p-5">
     <div class="">
+      @if($errors->first('sub_category_id'))
+      <span class="error_message">{{ $errors->first('sub_category_id') }}</span>
+      @endif
       <p class="mb-0">カテゴリー</p>
       <!-- 投稿サブカテゴリー表示 -->
-      <select class="form-select w-100" name="main_category_id" form="subCategoryRequest">
+      <select class="form-select w-100" name="sub_category_id" form="postCreate" >
         <option disabled selected>選択してください</option>
         @foreach($categories as $main_category)
         <option disabled selected="{{ $main_category->main_category }}">
         {{ $main_category->main_category }}
         </option>
         @foreach($sub_categories as $sub_category)
-        <option value="{{ $sub_category->sub_category }}">
         @if($main_category->id === $sub_category->main_category_id )
+        <option value="{{ $sub_category->id }}">
         <span>{{$sub_category->sub_category}}</span>
-        @endif
         </option>
+        @endif
         @endforeach
         @endforeach
       </select>
