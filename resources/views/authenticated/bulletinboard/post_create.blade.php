@@ -10,15 +10,15 @@
       <p class="mb-0">カテゴリー</p>
       <!-- 投稿サブカテゴリー表示 -->
       <select class="form-select w-100" name="sub_category_id" form="postCreate" >
-        <option disabled selected>選択してください</option>
+        <option value="" selected>選択してください</option>
         @foreach($categories as $main_category)
-        <option disabled selected="{{ $main_category->main_category }}">
+        <option disabled ="{{ $main_category->main_category }}">
         {{ $main_category->main_category }}
         </option>
         @foreach($sub_categories as $sub_category)
         @if($main_category->id === $sub_category->main_category_id )
         <option value="{{ $sub_category->id }}">
-        <span>{{$sub_category->sub_category}}</span>
+        {{$sub_category->sub_category}}
         </option>
         @endif
         @endforeach
