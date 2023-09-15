@@ -8,6 +8,9 @@
     <div class="post_area border w-75 m-auto p-3">
       <p><span>{{ $post->user->over_name }}</span><span class="ml-3">{{ $post->user->under_name }}</span>さん</p>
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
+      @foreach($post->subCategories as $sub_category)
+            <p><span>{{ $sub_category->sub_category }}</span></p>
+      @endforeach
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
           <div class="mr-5">
@@ -43,10 +46,10 @@
       <ul>
         <!-- メインカテゴリーのidとサブカテゴリーに登録されているメインカテゴリーidが一致したものを繰り返し表示 -->
         @foreach($categories as $main_category)
-        <li class="main_categories" category_id="{{ $main_category->id }}"><span>{{ $main_category->main_category }}<span></li>
+        <li class="main_categories" category_id="{{ $main_category->id }}">{{ $main_category->main_category }}</li>
         @foreach($sub_categories as $sub_category)
         @if($main_category->id === $sub_category->main_category_id )
-        <span>{{$sub_category->sub_category}}</span>
+        <li><input type="submit" name="category_word" class="category_btn" value="{{$sub_category->sub_category}}" form="postSearchRequest"></li>
         @endif
         @endforeach
         @endforeach
