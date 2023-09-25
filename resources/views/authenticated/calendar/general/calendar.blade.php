@@ -15,4 +15,5 @@
     </div>
   </div>
 </div>
+<!-- モーダルの中身 -->
 @endsection

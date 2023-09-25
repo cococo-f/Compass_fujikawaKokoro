@@ -28,6 +28,7 @@ class SelectIdDetails implements DisplayUsers{
       $q->whereIn('sex', $gender)
       ->whereIn('role', $role);
     })
+    // 配列で受け取るためwhereInを使用
     ->whereHas('subjects', function($q) use ($subjects){
       $q->whereIn('subjects.id', $subjects);
     })
