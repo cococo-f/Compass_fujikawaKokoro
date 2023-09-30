@@ -48,11 +48,14 @@ $(function () {
     });
   });
 
-  $('.edit-modal-open').on('click',function(){
+  $('.edit-modal-open').on('click', function () {
     $('.js-modal').fadeIn();
+    // varは変数、attrの値を受け取っている（bladeのspanタグの値）
     var post_title = $(this).attr('post_title');
     var post_body = $(this).attr('post_body');
     var post_id = $(this).attr('post_id');
+    // bladeのクラス名に値を渡している
+    // valはvalue
     $('.modal-inner-title input').val(post_title);
     $('.modal-inner-body textarea').text(post_body);
     $('.edit-modal-hidden').val(post_id);

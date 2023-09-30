@@ -16,4 +16,25 @@
   </div>
 </div>
 <!-- モーダルの中身 -->
+<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+      <div class="w-100">
+        <div>予約日：</div>
+        <div class="modal-inner-day w-50 m-auto">
+          <input type="text" name="delete_day" class="w-100" >
+        </div>
+        <div>時間：</div>
+        <div class="modal-inner-reserve w-50 m-auto pt-3 pb-3">
+          <input type="" name="delete_reserve" class="w-100"></input>
+        </div>
+        上記の予約をキャンセルしてもよろしいでしょうか？
+        <div class="w-50 m-auto edit-modal-btn d-flex">
+          <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
+          <input type="hidden" class="edit-modal-hidden" name="delete_id" value="">
+          <input type="submit" class="btn btn-primary d-block" value="キャンセル">
+        </div>
+      </div>
+  </div>
+</div>
 @endsection
