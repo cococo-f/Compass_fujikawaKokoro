@@ -15,20 +15,23 @@
     </div>
   </div>
 </div>
-<!-- モーダルの中身 -->
+<!-- キャンセルモーダルの中身 -->
+<!-- 予約日や時間はjsファイルの値をクラス名で受け取っている -->
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>
-  <div class="modal__content">
+  <div class="modal__content w-50 m-auto">
       <div class="w-100">
-        <div>予約日：</div>
-        <div class="modal-inner-day w-50 m-auto">
+        <div class="w-50 m-auto">予約日：
+        <span class="modal-inner-day w-50 m-auto">
           <input type="text" name="delete_day" class="w-100" >
+        </span>
         </div>
-        <div>時間：</div>
-        <div class="modal-inner-reserve w-50 m-auto pt-3 pb-3">
+        <div class="w-50 m-auto">時間：
+        <span class="modal-inner-reserve w-50 m-auto pt-3 pb-3">
           <input type="" name="delete_reserve" class="w-100"></input>
+        </span>
         </div>
-        上記の予約をキャンセルしてもよろしいでしょうか？
+        <div class="w-50 m-auto">上記の予約をキャンセルしてもよろしいですか？</div>
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="delete_id" value="">

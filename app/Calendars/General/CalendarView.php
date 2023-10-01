@@ -64,6 +64,7 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
           // 予約されていて未来であればキャンセルボタン表示
+          // buttonタグの中でモーダルのjsファイルに値を渡している
           }else{
             $html[] = '<button type="submit" class="cancel-modal-open btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px"
             delete_day="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'"
