@@ -65,6 +65,7 @@ class CalendarView{
 
           // 予約されていて未来であればキャンセルボタン表示
           // buttonタグの中でモーダルのjsファイルに値を渡している
+          // フォームにはリモ〇部ではなく値を表示させるため$reservePartを使う
           }else{
             $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
             $html[] = '<button type="submit" class="cancel-modal-open btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px"
@@ -95,6 +96,7 @@ class CalendarView{
     $html[] = '</tbody>';
     $html[] = '</table>';
     $html[] = '</div>';
+    // formタグのidにルート名
     $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">'.csrf_field().'</form>';
     $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">'.csrf_field().'</form>';
 

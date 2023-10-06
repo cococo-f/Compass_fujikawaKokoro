@@ -17,6 +17,7 @@
 </div>
 <!-- キャンセルモーダルの中身 -->
 <!-- 予約日や時間はjsファイルの値をクラス名で受け取っている -->
+<!-- クラス名は半角スペースで複数つけることができる -->
 <div class="modal js-modal">
   <div class="modal__bg js-modal-close"></div>
   <div class="modal__content w-50 m-auto">
@@ -29,12 +30,12 @@
         <div class="w-50 m-auto">時間：
         <span class="modal-inner-reserve w-50 m-auto pt-3 pb-3">
         </span>
+        <!-- inputタグのform属性とformタグのid属性を一致させる（CalenderView.php） -->
         <input type="hidden" name="delete_reserve" form="deleteParts" class="w-100 delete_part" value="">
         </div>
         <div class="w-50 m-auto">上記の予約をキャンセルしてもよろしいですか？</div>
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
-          <input type="hidden" class="edit-modal-hidden" name="delete_id" value="">
           <input type="submit" class="btn btn-primary d-block" form="deleteParts" value="キャンセル">
         </div>
       </div>

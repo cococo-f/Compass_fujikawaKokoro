@@ -45,6 +45,7 @@ class CalendarsController extends Controller
             $getDate = $request->delete_day;
             $reserve_settings = ReserveSettings::where('setting_reserve', $getDate)->where('setting_part', $getPart)->first();
             $reserve_settings->increment('limit_users');
+            // usersメソッドはReserveSettingsモデルに記述あり
             $reserve_settings->users()->detach(Auth::id());
             DB::commit();
         }catch(\Exception $e){
