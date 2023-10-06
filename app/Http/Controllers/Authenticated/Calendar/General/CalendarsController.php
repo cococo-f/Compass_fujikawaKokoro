@@ -18,6 +18,7 @@ class CalendarsController extends Controller
         return view('authenticated.calendar.general.calendar', compact('calendar'));
     }
 
+    // モデルからメソッドを探すことができる
     public function reserve(Request $request){
         DB::beginTransaction();
         try{
@@ -33,7 +34,22 @@ class CalendarsController extends Controller
         }catch(\Exception $e){
             DB::rollback();
         }
-        return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+        return redirect()
+        ->route('calendar.general.show', ['user_id' => Auth::id()]);
     }
     // 削除は逆をおこなう
+    public function delete(Request $request){
+        DB::beginTransaction();
+        try{
+            $getPart = $request->delete_reserve;
+            $getDate = $request->delete_day;
+            $reserve_settings = ReserveSettings::where('setting_reserve', $getDate)->where('setting_part', $getPart)->first();
+            $reserve_settings->increment('limit_users');
+            $reserve_settings->users()->detach(Auth::id());
+            DB::commit();
+        }catch(\Exception $e){
+            DB::rollback();
+        }
+        return redirect()->route('calendar.general.show', ['user_id' => Auth::id()]);
+    }
 }

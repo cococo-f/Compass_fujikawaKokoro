@@ -50,26 +50,27 @@ class CalendarView{
 
         // 予約されていれば　　〇部と表示
         if(in_array($day->everyDay(), $day->authReserveDay())){
-          $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
-          if($reservePart == 1){
-            $reservePart = "リモ1部";
-          }else if($reservePart == 2){
-            $reservePart = "リモ2部";
-          }else if($reservePart == 3){
-            $reservePart = "リモ3部";
+          $reservePartText = $day->authReserveDate($day->everyDay())->first()->setting_part;
+          if($reservePartText == 1){
+            $reservePartText = "リモ1部";
+          }else if($reservePartText == 2){
+            $reservePartText = "リモ2部";
+          }else if($reservePartText == 3){
+            $reservePartText = "リモ3部";
           }
           // 予約されていて過去であれば〇部参加と表示
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'. $reservePart .'参加'.'</p>';
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'. $reservePartText .'参加'.'</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
           // 予約されていて未来であればキャンセルボタン表示
           // buttonタグの中でモーダルのjsファイルに値を渡している
           }else{
+            $reservePart = $day->authReserveDate($day->everyDay())->first()->setting_part;
             $html[] = '<button type="submit" class="cancel-modal-open btn btn-danger p-0 w-75" name="delete_date" style="font-size:12px"
             delete_day="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'"
             delete_reserve="'. $reservePart .'"
-            value="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" >'. $reservePart .'</button>';
+            value="'. $reservePartText .'" >'. $reservePartText .'</button>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }
 
