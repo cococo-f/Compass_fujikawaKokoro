@@ -3,6 +3,7 @@ namespace App\Calendars\Admin;
 
 use Carbon\Carbon;
 use App\Models\Calendars\ReserveSettings;
+use App\Models\Calendars\ReserveSettingUsers;
 
 class CalendarWeekDay{
   protected $carbon;
@@ -31,15 +32,29 @@ class CalendarWeekDay{
 
 
 
-    $html[] = '<div class="text-left">{{'.$ymd.'}}';
+    $html[] = '<div class="text-left">';
+    // 絶対に変数が中にある状態（if文の中）で記述
+    // if文の外に出すとnullでエラーになったので注意
     if($one_part){
+      $one_part_count = $one_part->users->count();
+      $html[] ='<div class="part_count_area">';
       $html[] = '<p class="day_part m-0 pt-1">1部</p>';
+      $html[] = '<p class="part_count">'.$one_part_count.'</p>';
+      $html[] = '</div>';
     }
     if($two_part){
+      $two_part_count = $two_part->users->count();
+      $html[] ='<div class="part_count_area">';
       $html[] = '<p class="day_part m-0 pt-1">2部</p>';
+      $html[] = '<p class="part_count">'.$two_part_count.'</p>';
+      $html[] = '</div>';
     }
     if($three_part){
+      $three_part_count = $three_part->users->count();
+      $html[] ='<div class="part_count_area">';
       $html[] = '<p class="day_part m-0 pt-1">3部</p>';
+      $html[] = '<p class="part_count">'.$three_part_count.'</p>';
+      $html[] = '</div>';
     }
     $html[] = '</div>';
 
