@@ -39,21 +39,36 @@ class CalendarWeekDay{
       $one_part_count = $one_part->users->count();
       $html[] ='<div class="part_count_area">';
       $html[] = '<p class="day_part m-0 pt-1">1部</p>';
-      $html[] = '<p class="part_count">'.$one_part_count.'</p>';
+      $html[] = '<p class="part_count">';
+      // リンク設置するとき{{}}の書き方はbladeでしか使えないから書き方注意！！
+      // ルート名使いたいのであれば文字列と変数で区切る！！
+      $html[] = '<a href=" ' .route('calendar.admin.detail', ['id' => auth()->user()->id, 'data' => $one_part->setting_reserve, 'part' => $one_part->setting_part]).'">';
+      $html[] = $one_part_count;
+      $html[] = '</a>';
+      $html[] = '</p>';
       $html[] = '</div>';
-    }
+    };
+
     if($two_part){
       $two_part_count = $two_part->users->count();
       $html[] ='<div class="part_count_area">';
       $html[] = '<p class="day_part m-0 pt-1">2部</p>';
-      $html[] = '<p class="part_count">'.$two_part_count.'</p>';
+      $html[] = '<p class="part_count">';
+      $html[] = '<a href=" ' .route('calendar.admin.detail', ['id' => auth()->user()->id, 'data' => $two_part->setting_reserve, 'part' => $two_part->setting_part]).'">';
+      $html[] = $two_part_count;
+      $html[] = '</a>';
+      $html[] = '</p>';
       $html[] = '</div>';
     }
     if($three_part){
       $three_part_count = $three_part->users->count();
-      $html[] ='<div class="part_count_area">';
+      $html[] ='<div class="">';
       $html[] = '<p class="day_part m-0 pt-1">3部</p>';
-      $html[] = '<p class="part_count">'.$three_part_count.'</p>';
+      $html[] = '<p class="part_count">';
+      $html[] = '<a href=" ' .route('calendar.admin.detail', ['id' => auth()->user()->id, 'data' => $three_part->setting_reserve, 'part' => $three_part->setting_part]).'">';
+      $html[] = $three_part_count;
+      $html[] = '</a>';
+      $html[] = '</p>';
       $html[] = '</div>';
     }
     $html[] = '</div>';
