@@ -3,7 +3,7 @@
 @section('content')
 <div class="vh-100 border">
   <div class="top_area w-75 m-auto pt-5">
-    <span>{{ $user->over_name }}</span><span>{{ $user->under_name }}さんのプロフィール</span>
+    <p>{{ $user->over_name }} {{ $user->under_name }}さんのプロフィール</p>
     <div class="user_status p-3">
       <p>名前 : <span>{{ $user->over_name }}</span><span class="ml-1">{{ $user->under_name }}</span></p>
       <p>カナ : <span>{{ $user->over_name_kana }}</span><span class="ml-1">{{ $user->under_name_kana }}</span></p>
@@ -20,7 +20,7 @@
         <div class="subject_inner">
           <form action="{{ route('user.edit') }}" method="post">
             @foreach($subject_lists as $subject_list)
-            <div>
+            <div class="subject_list">
               <label>{{ $subject_list->subject }}</label>
               <input type="checkbox" name="subjects[]" value="{{ $subject_list->id }}">
             </div>

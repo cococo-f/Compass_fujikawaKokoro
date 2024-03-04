@@ -19,17 +19,18 @@
   <div class="d-flex">
     <div class="sidebar">
       @section('sidebar')
-      <p><a href="{{ route('top.show') }}">トップ</a></p>
-      <p><a href="/logout">ログアウト</a></p>
-      <p><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}">スクール予約</a></p>
+      <p class="mypage-content"><a href="{{ route('top.show') }}"><img src="<?php echo asset('image/家のアイコン素材.png') ?>" alt="マイページ画像" class="mypage-image">マイページ</a>
+    </p>
+      <p class="logout-content"><a href="/logout"><img src="<?php echo asset('image/ログイン・サインインのアイコン素材 2.png') ?>" alt="ログアウト画像" class="logout-image">ログアウト</a></p>
+      <p class="reserve-content"><a href="{{ route('calendar.general.show',['user_id' => Auth::id()]) }}"><img src="<?php echo asset('image/カレンダーのフリーアイコン2.png') ?>" alt="スクール予約画像" class="reserve-image">スクール予約</a></p>
       <!-- 講師アカウントにのみ表示 -->
       @if (Auth::user()->role < 4 )
-      <p><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()])}}">スクール予約確認</a></p>
-      <p><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}">スクール枠登録</a></p>
+      <p class="check-content"><a href="{{ route('calendar.admin.show',['user_id' => Auth::id()])}}"><img src="<?php echo asset('image/calendar_check_24.png') ?>" alt="スクール予約確認画像" class="check-image">スクール予約確認</a></p>
+      <p class="setting-content"><a href="{{ route('calendar.admin.setting',['user_id' => Auth::id()]) }}"><img src="<?php echo asset('image/記事アイコン1.png') ?>" alt="スクール枠登録画像" class="setting-image">スクール枠登録</a></p>
       @endif
 
-      <p><a href="{{ route('post.show') }}">掲示板</a></p>
-      <p><a href="{{ route('user.show') }}">ユーザー検索</a></p>
+      <p class="bulletinboard-content"><a href="{{ route('post.show') }}"><img src="<?php echo asset('image/吹き出しのアイコン15.png') ?>" alt="掲示板画像" class="bulletinboard-image">掲示板</a></p>
+      <p class="search-content"><a href="{{ route('user.show') }}"><img src="<?php echo asset('image/人物アイコン　チーム.png') ?>" alt="掲示板画像" class="search-image">ユーザー検索</a></p>
       @show
     </div>
     <div class="main-container">

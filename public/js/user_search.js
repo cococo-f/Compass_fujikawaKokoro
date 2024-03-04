@@ -5,5 +5,6 @@ $(function () {
 
   $('.subject_edit_btn').click(function () {
     $('.subject_inner').slideToggle();
+    $('.subject_edit_btn').toggleClass("open", 300);
   });
 });
