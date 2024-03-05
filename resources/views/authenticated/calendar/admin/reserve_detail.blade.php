@@ -3,7 +3,7 @@
 @section('content')
 <div class="d-flex" style="align-items:center; justify-content:center;">
   <div class="w-50 m-auto h-75">
-    <p><span>{{$date}}</span><span class="ml-3">{{$part}}部</span></p>
+    <p class="reserve_date_part"><span>{{$date}}</span><span class="ml-3">{{$part}}部</span></p>
     <div class="border user_status p-3">
       <table class="detail_table">
         <tr class="text-center">

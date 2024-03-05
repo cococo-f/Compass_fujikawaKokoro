@@ -241,6 +241,10 @@ li {
   border-bottom: 1px solid #cdcdcdb3;
 }
 
+.reserve_date_part {
+  margin-top: 60px;
+}
+
 /* 掲示板 */
 .sub_categories {
   display: none;
