@@ -43,24 +43,20 @@
       </div>
       <input type="submit" name="like_posts" class="like_category_btn" value="いいねした投稿" form="postSearchRequest">
       <input type="submit" name="my_posts" class="my_category_btn" value="自分の投稿" form="postSearchRequest">
-      <ul>
         <!-- メインカテゴリーのidとサブカテゴリーに登録されているメインカテゴリーidが一致したものを繰り返し表示 -->
         <p class="category_search">カテゴリー検索</p>
-        <div class="menu">
-        @foreach($categories as $main_category)
-        <label for="menu_bar" class="main_categories" category_id="{{ $main_category->id }}">{{ $main_category->main_category }}
-        </label>
-        @foreach($sub_categories as $sub_category)
-        @if($main_category->id === $sub_category->main_category_id )
-        <ul id="links">
-        <li>{{$sub_category->sub_category}}</li>
-        <input type="submit" name="category_word" class="category_btn" value="{{$sub_category->sub_category}}" form="postSearchRequest">
-        </ul>
-        @endif
-        @endforeach
-        @endforeach
-        </div>
-      </ul>
+          <div class="menu">
+          @foreach($categories as $main_category)
+            <label for="menu_bar" class="main_categories" category_id="{{ $main_category->id }}">{{ $main_category->main_category }}</label>
+            <ul class="category_list category_num_{{ $main_category->id }}" style="display: none;">
+            @foreach($sub_categories as $sub_category)
+              @if($main_category->id === $sub_category->main_category_id)
+                <li><input type="submit" name="category_word" class="category_btn" value="{{ $sub_category->sub_category }}" form="postSearchRequest"></li>
+              @endif
+            @endforeach
+            </ul>
+          @endforeach
+      </div>
     </div>
   </div>
   <form action="{{ route('post.show') }}" method="get" id="postSearchRequest"></form>

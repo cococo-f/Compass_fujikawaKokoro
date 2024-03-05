@@ -487,12 +487,43 @@ li {
   border: none;
 }
 
-
-.main_categories span,
-.sub_categories li input {
+/* カテゴリー検索アコーディオン */
+.main_categories {
   list-style: none;
   cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid #494949;
+  width: 80%;
 }
+
+.main_categories::after {
+  content: "";
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-top: #000000 2px solid;
+  border-right: #000000 2px solid;
+  transform: rotate(135deg);
+  transition: transform .3s ease-in-out, top .3s ease-in-out;
+  position: absolute;
+  left:110%;
+  top: 7%;
+  bottom: 0;
+  margin: auto;
+}
+
+.main_categories.open::after {
+  top: 7%;
+  transform: rotate(-45deg);
+}
+
+.category_btn {
+  background: none;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 
 /* ユーザー検索 */
 .reserve_users_area {
@@ -545,6 +576,7 @@ li {
 }
 
 .search_sex{
+  margin-top: 10px;
   margin-bottom: 10px;
 }
 .user_search_window{
@@ -553,7 +585,7 @@ li {
 }
 
 /*バー部分*/
-.search_conditions span {
+.search_conditions {
   width: 80%;
   cursor: pointer;
   display: block;
@@ -565,45 +597,27 @@ li {
   border-bottom: 1px solid #494949;
 }
 
-.add_search_check {
-  display: none;
-  /*チェックボックスを隠す*/
-}
 
-/*閉じた状態の矢印描画*/
-.search_conditions :after {
+/* 矢印 */
+.search_conditions:after {
   content: "";
   display: block;
   width: 8px;
   height: 8px;
   border-top: #000000 2px solid;
   border-right: #000000 2px solid;
-  -webkit-transform: rotate(135deg);
-  -ms-transform: rotate(135deg);
   transform: rotate(135deg);
-  position: absolute;
-  right: 2%;
-  top: 0;
-  bottom: 15%;
-  margin: auto;
-}
-
-/*開いた状態の矢印描画*/
-.add_search input[type=checkbox]:checked+search_conditions:after {
-  content: "";
-  display: block;
-  width: 8px;
-  height: 8px;
-  border-top: #000000 2px solid;
-  border-right: #000000 2px solid;
-  -webkit-transform: rotate(-45deg);
-  -ms-transform: rotate(-45deg);
-  transform: rotate(-45deg);
+  transition: transform .3s ease-in-out, top .3s ease-in-out;
   position: absolute;
   right: 2%;
   top: 7%;
   bottom: 0;
   margin: auto;
+}
+
+.search_conditions.open::after {
+  top: 7%;
+  transform: rotate(-45deg);
 }
 
 .search_conditions_inner {

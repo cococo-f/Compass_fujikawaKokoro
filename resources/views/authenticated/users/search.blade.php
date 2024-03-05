@@ -71,8 +71,7 @@
         </select>
       </div>
       <div class="add_search">
-        <input type="checkbox" id="menu_bar01" class="add_search_check input_border">
-        <div class="m-0 search_conditions navy-text"><span>検索条件の追加</span></div>
+        <div class=""><span class="m-0 search_conditions navy-text">検索条件の追加</span></div>
         <div class="search_conditions_inner">
           <div class="search_sex">
             <label class="navy-text search_item">性別</label>
