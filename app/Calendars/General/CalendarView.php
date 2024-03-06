@@ -26,8 +26,8 @@ class CalendarView{
     $html[] = '<th>水</th>';
     $html[] = '<th>木</th>';
     $html[] = '<th>金</th>';
-    $html[] = '<th>土</th>';
-    $html[] = '<th>日</th>';
+    $html[] = '<th class="day-sat">土</th>';
+    $html[] = '<th class="day-sun">日</th>';
     $html[] = '</tr>';
     $html[] = '</thead>';
     $html[] = '<tbody>';
@@ -42,11 +42,13 @@ class CalendarView{
 
         // 過去か未来か
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-          $html[] = '<td class="calendar-td" style="background-color:#EEE">';
+          $html[] = '<td class="calendar-td '.$day->getClassName().'" style="background-color:#EEE">';
         }else{
           $html[] = '<td class="calendar-td '.$day->getClassName().'">';
         }
         $html[] = $day->render();
+
+        
 
         // 予約されていれば　　〇部と表示
         if(in_array($day->everyDay(), $day->authReserveDay())){
@@ -79,7 +81,7 @@ class CalendarView{
         }else{
           // 予約されてなく過去であれば受付終了と表示
           if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
-            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
+            $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px; color: #000000;">受付終了</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
           // 予約されていなく未来であればセレクトボックス表示
